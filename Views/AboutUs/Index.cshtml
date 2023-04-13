@@ -1,0 +1,29 @@
+﻿@model IEnumerable<HandJWebApp.Models.Model.AboutUs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.AboutUsId }) 
+
+        </td>
+    </tr>
+}
+
+</table>

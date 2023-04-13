@@ -1,0 +1,46 @@
+﻿@model IEnumerable<HandJWebApp.Models.Model.Slider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Slider</h2>
+
+<p>
+    <a href="/Slider/Create/" class="btn btn-default">Yeni Slider Ekle</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Explanation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Explanation)
+        </td>
+        <td>
+            <img src="@item.ImageURL" width="150" height="150" />
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.SliderId }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.SliderId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.SliderId })
+        </td>
+    </tr>
+}
+
+</table>
